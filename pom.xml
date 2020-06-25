@@ -11,6 +11,7 @@
     <description>学习的代码与笔记</description>
     <modules>
         <module>leet-code-master</module>
+        <module>design-patterns-master</module>
     </modules>
 
 

@@ -23,6 +23,7 @@
     <modules>
         <module>leet-code-master</module>
         <module>design-patterns-master</module>
+        <module>data-structure-master</module>
     </modules>
 
     <dependencies>

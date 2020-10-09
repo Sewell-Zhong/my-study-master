@@ -9,9 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>design-patterns-master</artifactId>
+    <artifactId>data-structure-master</artifactId>
 
-    <description>设计模式代码笔记</description>
+    <description>数据结构代码与笔记</description>
 
 
 </project>

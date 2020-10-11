@@ -1,14 +1,16 @@
-package com.list.linked.code;
+package com.list.twoWayLinked.code;
+
+import org.omg.CORBA.Object;
 
 
 /**
- * 动态数组（ArrayList）
+ * 动态数组(含数组缩容)
  *
  * @author : Mr-Z
- * @date : 2020/10/11 18:17
+ * @date : 2020/10/12 0:37
  */
 @SuppressWarnings("unchecked")
-public class ArrayList<E> extends AbstractList <E> {
+public class ArrayList2<E> extends AbstractList <E> {
 
     /**
      * 创建一个数组，用来保存所有的元素
@@ -18,15 +20,15 @@ public class ArrayList<E> extends AbstractList <E> {
     /**
      * 默认初始化时，数组的大小
      */
-    private static final int DEFAULT_CAPACITY = 2;
+    private static final int DEFAULT_CAPACITY = 10;
 
-    public ArrayList(int capaticy) {
+    public ArrayList2(int capaticy) {
         capaticy = capaticy > DEFAULT_CAPACITY ? capaticy : DEFAULT_CAPACITY;
         //初始化数组大小
         elements = (E[]) new Object[capaticy];
     }
 
-    public ArrayList() {
+    public ArrayList2() {
         this(DEFAULT_CAPACITY);
     }
 
@@ -52,25 +54,26 @@ public class ArrayList<E> extends AbstractList <E> {
     /**
      * 删除数组中某个下标的元素
      *
-     * @param index 被删除元素的位置
+     * @param index 被删除元素的下表
      * @return 被删除元素的值
      */
     @Override
     public E remove(int index) {
         //对索引进行判断
         rangeCheck(index);
-
         E old = elements[index];
         for (int i = index+1; i <= size-1; i++) {
             elements[i-1] = elements[i];
         }
         elements[--size] = null;
+        // 数组缩容
+        trim();
         return old;
     }
 
 
     /**
-     * 清除数组中的所有元素
+     * 清除数组中的所有元素，
      * 把size设置为0，则外面就无法访问数组中原来的内容，对于外界来讲，是已经将数组清空了，
      * 但是实际不用删除原来内存上的数据，应为清除数据需要消耗额外的性能，并且这种操作几乎没有作用
      */
@@ -80,6 +83,9 @@ public class ArrayList<E> extends AbstractList <E> {
             elements[i] = null;
         }
         size = 0;
+        if (elements != null && elements.length > DEFAULT_CAPACITY) {
+            elements = (E[]) new Object[DEFAULT_CAPACITY];
+        }
     }
 
     /**
@@ -118,41 +124,18 @@ public class ArrayList<E> extends AbstractList <E> {
     public int indexOf(E element) {
         if (element == null) {
             for (int i = 0; i < size; i++) {
-                if (elements[i] == null) {
+                if (elements[i] == null){
                     return i;
                 }
             }
         } else {
             for (int i = 0; i < size; i++) {
-                if (element.equals(elements[i])) {
+                if (element.equals(elements[i])){
                     return i;
                 }
             }
         }
-
         return ELEMENT_NOT_FOUND;
-    }
-
-    /**
-     * 数组扩容 保证要有capacity的容量
-     *
-     * @param capacity 容量
-     */
-    private void ensureCapacity(int capacity) {
-        int oldCapacity = elements.length;
-        if (oldCapacity < capacity) {
-            //确定新的容量  新容量为旧容量的1.5倍
-            int newCapacity = oldCapacity+(oldCapacity >> 1);
-            //创建一个更大存储空间的数组
-            E[] newElements = (E[]) new Object[newCapacity];
-            //将原来数组中的元素，复制到新的数组中
-            for (int i = 0; i < size; i++) {
-                //系统提供了API来对数组进行挪动，效率更高，在这里用这种方式，是为了看起来更清晰
-                newElements[i] = elements[i];
-            }
-            elements = newElements;
-            System.out.println("旧容量："+oldCapacity+"新容量："+newCapacity);
-        }
     }
 
     /**
@@ -178,5 +161,47 @@ public class ArrayList<E> extends AbstractList <E> {
         }
         string.append("]");
         return string.toString();
+    }
+
+    /**
+     * 数组缩容
+     */
+    private void trim() {
+        int capacity = elements.length;
+        if ((capacity <= (size << 1)) || capacity <= DEFAULT_CAPACITY){
+            //不需要缩容
+            return;
+        }
+        //剩余空间还很多
+        int newCapacity = capacity >> 1;
+        E[] newElements = (E[]) new Object[newCapacity];
+        //将原来数组中的元素，复制到新的数组中
+        for (int i = 0; i < size; i++) {
+            //系统提供了API来对数组进行挪动，效率更高，在这里用这种方式，是为了看起来更清晰
+            newElements[i] = elements[i];
+        }
+        elements = newElements;
+        System.out.println("缩容 旧容量："+capacity+"新容量："+newCapacity);
+    }
+
+    /**
+     * 数组扩容 保证要有capacity的容量
+     * @param capacity 容量
+     */
+    private void ensureCapacity(int capacity) {
+        int oldCapacity = elements.length;
+        if (oldCapacity < capacity) {
+            //确定新的容量  新容量为旧容量的1.5倍
+            int newCapacity = oldCapacity+(oldCapacity >> 1);
+            //创建一个更大存储空间的数组
+            E[] newElements = (E[]) new Object[newCapacity];
+            //将原来数组中的元素，复制到新的数组中
+            for (int i = 0; i < size; i++) {
+                //系统提供了API来对数组进行挪动，效率更高，在这里用这种方式，是为了看起来更清晰
+                newElements[i] = elements[i];
+            }
+            elements = newElements;
+            System.out.println("扩容 旧容量："+oldCapacity+"新容量："+newCapacity);
+        }
     }
 }

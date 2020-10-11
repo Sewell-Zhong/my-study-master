@@ -1,5 +1,7 @@
-package com.list.array.code;
+package com.list.array.code.test;
 
+
+import com.list.array.code.ArrayList;
 
 /**
  * 动态数组测试
@@ -10,7 +12,7 @@ public class ArrayListTest {
 
     public static void main(String[] args) {
         System.out.println("ArrayListTest.main");
-        ArrayList<Integer> arrayList = new ArrayList <>();
+        ArrayList <Integer> arrayList = new ArrayList <>();
         arrayList.add(99);
         arrayList.add(88);
         arrayList.add(77);

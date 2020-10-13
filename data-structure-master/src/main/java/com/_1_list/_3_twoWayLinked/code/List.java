@@ -1,4 +1,4 @@
-package com._1_list._2_twoWayLinked.code;
+package com._1_list._3_twoWayLinked.code;
 
 /***
  * List接口

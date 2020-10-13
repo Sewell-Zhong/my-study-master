@@ -1,34 +1,30 @@
-package com._1_list._2_twoWayLinked.code;
-
-import org.omg.CORBA.Object;
-
+package com._1_list._3_twoWayLinked.code;
 
 /**
- * 动态数组(含数组缩容)
+ * 动态数组
  *
  * @author : Mr-Z
- * @date : 2020/10/12 0:37
+ * @date : 2020/10/12 0:43
  */
 @SuppressWarnings("unchecked")
-public class ArrayList2<E> extends AbstractList <E> {
+public class ArrayList<E> extends AbstractList <E> {
 
     /**
      * 创建一个数组，用来保存所有的元素
      */
-    private E[] elements;
-
+    private              E[] elements;
     /**
      * 默认初始化时，数组的大小
      */
-    private static final int DEFAULT_CAPACITY = 10;
+    private static final int DEFAULT_CAPACITY = 2;
 
-    public ArrayList2(int capaticy) {
+    public ArrayList(int capaticy) {
         capaticy = capaticy > DEFAULT_CAPACITY ? capaticy : DEFAULT_CAPACITY;
         //初始化数组大小
         elements = (E[]) new Object[capaticy];
     }
 
-    public ArrayList2() {
+    public ArrayList() {
         this(DEFAULT_CAPACITY);
     }
 
@@ -66,8 +62,6 @@ public class ArrayList2<E> extends AbstractList <E> {
             elements[i-1] = elements[i];
         }
         elements[--size] = null;
-        // 数组缩容
-        trim();
         return old;
     }
 
@@ -83,9 +77,6 @@ public class ArrayList2<E> extends AbstractList <E> {
             elements[i] = null;
         }
         size = 0;
-        if (elements != null && elements.length > DEFAULT_CAPACITY) {
-            elements = (E[]) new Object[DEFAULT_CAPACITY];
-        }
     }
 
     /**
@@ -124,13 +115,13 @@ public class ArrayList2<E> extends AbstractList <E> {
     public int indexOf(E element) {
         if (element == null) {
             for (int i = 0; i < size; i++) {
-                if (elements[i] == null){
+                if (elements[i] == null) {
                     return i;
                 }
             }
         } else {
             for (int i = 0; i < size; i++) {
-                if (element.equals(elements[i])){
+                if (element.equals(elements[i])) {
                     return i;
                 }
             }
@@ -164,28 +155,8 @@ public class ArrayList2<E> extends AbstractList <E> {
     }
 
     /**
-     * 数组缩容
-     */
-    private void trim() {
-        int capacity = elements.length;
-        if ((capacity <= (size << 1)) || capacity <= DEFAULT_CAPACITY){
-            //不需要缩容
-            return;
-        }
-        //剩余空间还很多
-        int newCapacity = capacity >> 1;
-        E[] newElements = (E[]) new Object[newCapacity];
-        //将原来数组中的元素，复制到新的数组中
-        for (int i = 0; i < size; i++) {
-            //系统提供了API来对数组进行挪动，效率更高，在这里用这种方式，是为了看起来更清晰
-            newElements[i] = elements[i];
-        }
-        elements = newElements;
-        System.out.println("缩容 旧容量："+capacity+"新容量："+newCapacity);
-    }
-
-    /**
      * 数组扩容 保证要有capacity的容量
+     *
      * @param capacity 容量
      */
     private void ensureCapacity(int capacity) {
@@ -201,7 +172,7 @@ public class ArrayList2<E> extends AbstractList <E> {
                 newElements[i] = elements[i];
             }
             elements = newElements;
-            System.out.println("扩容 旧容量："+oldCapacity+"新容量："+newCapacity);
+            System.out.println("旧容量："+oldCapacity+"新容量："+newCapacity);
         }
     }
 }

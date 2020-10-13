@@ -1,6 +1,6 @@
-package com.list.twoWayLinked.code.Single;
+package com._1_list._2_twoWayLinked.code.Single;
 
-import com.list.twoWayLinked.code.AbstractList;
+import com._1_list._2_twoWayLinked.code.AbstractList;
 
 /**
 * 单向链表

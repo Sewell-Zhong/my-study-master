@@ -1,7 +1,7 @@
-package com.list.array.code.test;
+package com._1_list._1_array.code.test;
 
 
-import com.list.array.code.ArrayList;
+import com._1_list._1_array.code.ArrayList;
 
 /**
  * 动态数组测试

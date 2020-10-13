@@ -1,10 +1,11 @@
-package com.list.twoWayLinked.code;
+package com._1_list._2_linked.code;
 
 /**
  * @author : Mr-Z
- * @date : 2020/10/12 0:45
+ * @date : 2020/10/11 18:08
  */
-public abstract class AbstractList<E> implements List<E>{
+public abstract class AbstractList<E> implements List <E> {
+
     /**
      * 保存当前数组的元素个数
      */
@@ -16,6 +17,7 @@ public abstract class AbstractList<E> implements List<E>{
      */
     @Override
     public int size() {
+        // 当前数组的元素个数
         return size;
     }
 
@@ -29,32 +31,35 @@ public abstract class AbstractList<E> implements List<E>{
     }
 
     /**
-     * 判断数组中，是否包含某个元素，
+     * 判断数组中，是否包含某个元素
+     *
+     * @return 包含，则返回true，不包含返回false
      */
     @Override
     public boolean contains(E element) {
-        // 包含，则返回true，不包含返回false
         return this.indexOf(element) != ELEMENT_NOT_FOUND;
     }
 
     /**
      * 往数组中添加一个元素
+     *
      * @param element 准备添加的元素
      */
     @Override
     public void add(E element) {
         //本质是往数组中最后一个元素后插入一个新的元素
-        System.out.println("size == " + size);
+        System.out.println("size == "+size);
 
-        add(size,element);
+        add(size, element);
     }
 
     /**
      * 封装异常信息
-     * @param index 异常信息位置
+     *
+     * @param index 异常索引下标
      */
     protected void outOfBounds(int index) {
-        throw new IndexOutOfBoundsException("Index:" + index + ",Size:" + size);
+        throw new IndexOutOfBoundsException("Index:"+index+",Size:"+size);
     }
 
     /**

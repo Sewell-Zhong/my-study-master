@@ -1,4 +1,4 @@
-package com.list.twoWayLinked.code.test;
+package com._1_list._2_twoWayLinked.code.test;
 
 /**
  * 测试断言类

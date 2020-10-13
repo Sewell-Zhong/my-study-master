@@ -1,4 +1,4 @@
-package com.list.array.code;
+package com._1_list._1_array.code;
 
 
 /**

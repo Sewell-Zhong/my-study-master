@@ -1,4 +1,4 @@
-package com.list.twoWayLinked.code;
+package com._1_list._2_twoWayLinked.code;
 
 /**
  * 双向链表

@@ -1,8 +1,8 @@
-package com.list.twoWayLinked.code.test;
+package com._1_list._2_twoWayLinked.code.test;
 
 
-import com.list.twoWayLinked.code.LinkedList;
-import com.list.twoWayLinked.code.List;
+import com._1_list._2_twoWayLinked.code.LinkedList;
+import com._1_list._2_twoWayLinked.code.List;
 
 public class LinkedListDemo {
 

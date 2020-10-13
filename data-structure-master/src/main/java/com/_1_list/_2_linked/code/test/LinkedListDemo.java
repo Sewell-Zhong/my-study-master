@@ -1,7 +1,7 @@
-package com.list.linked.code.test;
+package com._1_list._2_linked.code.test;
 
-import com.list.linked.code.LinkedList;
-import com.list.linked.code.List;
+import com._1_list._2_linked.code.LinkedList;
+import com._1_list._2_linked.code.List;
 
 /**
  * LinkedList测试

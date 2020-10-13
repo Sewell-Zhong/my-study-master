@@ -1,4 +1,4 @@
-package com._1_list._3_twoWayLinked.code.Single;
+package com._1_list._3_twoWayLinked.code.single;
 
 import com._1_list._3_twoWayLinked.code.AbstractList;
 

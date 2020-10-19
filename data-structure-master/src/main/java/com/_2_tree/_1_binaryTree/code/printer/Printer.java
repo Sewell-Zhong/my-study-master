@@ -1,9 +1,14 @@
 package com._2_tree._1_binaryTree.code.printer;
 
+/**
+ * 打印信息类
+ * @author : Mr-Z
+ * @date : 2020/10/19 23:21
+ */
 public abstract class Printer {	
-	/**
-	 * 二叉树的基本信息
-	 */
+    /**
+     * 二叉树的基本信息
+     */
 	protected BinaryTreeInfo tree;
 	
 	public Printer(BinaryTreeInfo tree) {

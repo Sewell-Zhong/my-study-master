@@ -19,8 +19,11 @@ import java.util.Queue;
      │     │     │     │
     146   445   600   800
     
- * @author MJ Lee
- *
+ */
+/**
+ * 层序遍历
+ * @author : Mr-Z
+ * @date : 2020/10/19 23:27
  */
 public class LevelOrderPrinter extends Printer {
 	/**
@@ -89,7 +92,9 @@ public class LevelOrderPrinter extends Printer {
 	 * 以满二叉树的形式填充节点
 	 */
 	private void fillNodes(List<List<Node>> nodes) {
-		if (nodes == null) return;
+		if (nodes == null){
+			return;
+		}
 		// 第一行
 		List<Node> firstRowNodes = new ArrayList<>();
 		firstRowNodes.add(root);
@@ -123,7 +128,9 @@ public class LevelOrderPrinter extends Printer {
 			}
 
 			// 全是null，就退出
-			if (!notNull) break;
+			if (!notNull){
+				break;
+			}
 			nodes.add(rowNodes);
 		}
 	}
@@ -132,10 +139,14 @@ public class LevelOrderPrinter extends Printer {
 	 * 删除全部null、更新节点的坐标
 	 */
 	private void cleanNodes(List<List<Node>> nodes) {
-		if (nodes == null) return;
+		if (nodes == null){
+			return;
+		}
 
 		int rowCount = nodes.size();
-		if (rowCount < 2) return;
+		if (rowCount < 2){
+			return;
+		}
 
 		// 最后一行的节点数量
 		int lastRowNodeCount = nodes.get(rowCount - 1).size();
@@ -185,17 +196,23 @@ public class LevelOrderPrinter extends Printer {
 	 * 压缩空格
 	 */
 	private void compressNodes(List<List<Node>> nodes) {
-		if (nodes == null) return;
+		if (nodes == null){
+			return;
+		}
 
 		int rowCount = nodes.size();
-		if (rowCount < 2) return;
+		if (rowCount < 2){
+			return;
+		}
 
 		for (int i = rowCount - 2; i >= 0; i--) {
 			List<Node> rowNodes = nodes.get(i);
 			for (Node node : rowNodes) {
 				Node left = node.left;
 				Node right = node.right;
-				if (left == null && right == null) continue;
+				if (left == null && right == null){
+					continue;
+				}
 				if (left != null && right != null) {
 					// 让左右节点对称
 					node.balance(left, right);
@@ -218,12 +235,16 @@ public class LevelOrderPrinter extends Printer {
 
 					// 继续挪动
 					space = left.minLevelSpaceToRight(right) - MIN_SPACE;
-					if (space < 1) continue;
+					if (space < 1) {
+						continue;
+					}
 
 					// 可以继续挪动的间距
 					leftEmpty = node.leftBoundEmptyLength();
 					rightEmpty = node.rightBoundEmptyLength();
-					if (leftEmpty < 1 && rightEmpty < 1) continue;
+					if (leftEmpty < 1 && rightEmpty < 1) {
+						continue;
+					}
 
 					if (leftEmpty > rightEmpty) {
 						left.translateX(Math.min(leftEmpty, space));
@@ -247,7 +268,9 @@ public class LevelOrderPrinter extends Printer {
 	}
 
 	private Node addLineNode(List<Node> curRow, List<Node> nextRow, Node parent, Node child) {
-		if (child == null) return null;
+		if (child == null) {
+			return null;
+		}
 
 		Node top = null;
 		int topX = child.topLineX();
@@ -286,7 +309,9 @@ public class LevelOrderPrinter extends Printer {
 		List<List<Node>> newNodes = new ArrayList<>();
 
 		int rowCount = nodes.size();
-		if (rowCount < 2) return;
+		if (rowCount < 2){
+			return;
+		}
 
 		minX = root.x;
 
@@ -374,7 +399,9 @@ public class LevelOrderPrinter extends Printer {
 		 * 右边界的位置（rightX 或者 右子节点topLineX的下一个位置）（极其重要）
 		 */
 		private int rightBound() {
-			if (right == null) return rightX();
+			if (right == null){
+				return rightX();
+			}
 			return right.topLineX() + 1;
 		}
 
@@ -382,7 +409,9 @@ public class LevelOrderPrinter extends Printer {
 		 * 左边界的位置（x 或者 左子节点topLineX）（极其重要）
 		 */
 		private int leftBound() {
-			if (left == null) return x;
+			if (left == null){
+				return x;
+			}
 			return left.topLineX();
 		}
 
@@ -426,8 +455,10 @@ public class LevelOrderPrinter extends Printer {
 		 * 让left和right基于this对称
 		 */
 		private void balance(Node left, Node right) {
-			if (left == null || right == null)
+			if (left == null || right == null){
 				return;
+			}
+
 			// 【left的尾字符】与【this的首字符】之间的间距
 			int deltaLeft = x - left.rightX();
 			// 【this的尾字符】与【this的首字符】之间的间距
@@ -442,8 +473,12 @@ public class LevelOrderPrinter extends Printer {
 		}
 
 		private int treeHeight(Node node) {
-			if (node == null) return 0;
-			if (node.treeHeight != 0) return node.treeHeight;
+			if (node == null) {
+				return 0;
+			}
+			if (node.treeHeight != 0){
+				return node.treeHeight;
+			}
 			node.treeHeight = 1 + Math.max(
 					treeHeight(node.left), treeHeight(node.right));
 			return node.treeHeight;
@@ -465,9 +500,13 @@ public class LevelOrderPrinter extends Printer {
 		}
 
 		private LevelInfo levelInfo(int level) {
-			if (level < 0) return null;
+			if (level < 0) {
+				return null;
+			}
 			int levelY = y + level;
-			if (level >= treeHeight(this)) return null;
+			if (level >= treeHeight(this)){
+				return null;
+			}
 
 			List<Node> list = new ArrayList<>();
 			Queue<Node> queue = new LinkedList<>();
@@ -478,7 +517,9 @@ public class LevelOrderPrinter extends Printer {
 				Node node = queue.poll();
 				if (levelY == node.y) {
 					list.add(node);
-				} else if (node.y > levelY) break;
+				} else if (node.y > levelY){
+					break;
+				}
 
 				if (node.left != null) {
 					queue.offer(node.left);
@@ -501,11 +542,15 @@ public class LevelOrderPrinter extends Printer {
 		}
 
 		public void translateX(int deltaX) {
-			if (deltaX == 0) return;
+			if (deltaX == 0) {
+				return;
+			}
 			x += deltaX;
 
 			// 如果是LineNode
-			if (btNode == null) return;
+			if (btNode == null){
+				return;
+			}
 
 			if (left != null) {
 				left.translateX(deltaX);

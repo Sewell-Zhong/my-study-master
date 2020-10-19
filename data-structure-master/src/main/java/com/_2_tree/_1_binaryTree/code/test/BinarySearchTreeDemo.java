@@ -1,13 +1,22 @@
-package com._2_tree._1_binaryTree.code;
+package com._2_tree._1_binaryTree.code.test;
 
 
+import com._2_tree._1_binaryTree.code.BinarySearchTree;
+import com._2_tree._1_binaryTree.code.Person;
 import com._2_tree._1_binaryTree.code.printer.BinaryTrees;
 
 import java.util.Comparator;
 
+/**
+ * 测试类
+ * @author : Mr-Z
+ * @date : 2020/10/19 23:52
+ */
 public class BinarySearchTreeDemo {
 
-    //比较方式1
+    /**
+     * 比较方式1
+     */
     private static class PersonComparator implements Comparator<Person> {
         @Override
         public int compare(Person e1, Person e2) {
@@ -15,7 +24,9 @@ public class BinarySearchTreeDemo {
         }
     }
 
-    //比较方式2
+    /**
+     * 比较方式2
+     */
     private static class PersonComparator2 implements Comparator<Person> {
         @Override
         public int compare(Person e1, Person e2) {
@@ -28,7 +39,7 @@ public class BinarySearchTreeDemo {
         Integer data[] = new Integer[]{
                 7,4,9,2,5,8,11,3,12,1
         };
-        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        BinarySearchTree <Integer> bst = new BinarySearchTree<>();
         for (int i = 0; i < data.length; i++) {
             bst.add(data[i]);
         }

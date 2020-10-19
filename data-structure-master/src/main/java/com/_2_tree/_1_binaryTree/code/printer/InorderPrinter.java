@@ -21,6 +21,11 @@ package com._2_tree._1_binaryTree.code.printer;
  * @author MJ Lee
  *
  */
+/**
+ * 中序遍历
+ * @author : Mr-Z
+ * @date : 2020/10/19 23:26
+ */
 public class InorderPrinter extends Printer {
 	private static String rightAppend;
 	private static String leftAppend;

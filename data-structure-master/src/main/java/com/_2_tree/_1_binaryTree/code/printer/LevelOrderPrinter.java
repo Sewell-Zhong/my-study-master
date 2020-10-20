@@ -1,5 +1,7 @@
 package com._2_tree._1_binaryTree.code.printer;
 
+import com._2_tree._1_binaryTree.code.BinaryTreeInfo;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;

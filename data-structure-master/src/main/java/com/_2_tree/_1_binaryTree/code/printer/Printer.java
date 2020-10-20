@@ -1,5 +1,7 @@
 package com._2_tree._1_binaryTree.code.printer;
 
+import com._2_tree._1_binaryTree.code.BinaryTreeInfo;
+
 /**
  * 打印信息类
  * @author : Mr-Z

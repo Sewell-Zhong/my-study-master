@@ -1,8 +1,6 @@
 package com._2_tree._1_binaryTree.code;
 
 
-import com._2_tree._1_binaryTree.code.printer.BinaryTreeInfo;
-
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Queue;

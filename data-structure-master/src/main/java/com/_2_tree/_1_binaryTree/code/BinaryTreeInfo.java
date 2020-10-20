@@ -1,4 +1,4 @@
-package com._2_tree._1_binaryTree.code.printer;
+package com._2_tree._1_binaryTree.code;
 
 /**
  * 二叉树接口

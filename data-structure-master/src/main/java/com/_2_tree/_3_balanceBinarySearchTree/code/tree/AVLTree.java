@@ -13,19 +13,25 @@ public class AVLTree<E> extends BST<E> {
 	
 	@Override
 	protected void afterAdd(Node<E> node) {
+		// 更新所有祖先节点的高度
 		while ((node = node.parent) != null) {
 			if (isBalanced(node)) {
 				// 更新高度
 				updateHeight(node);
 			} else {
 				// 恢复平衡
-				rebalance(node);
+				rebalance2(node);
 				// 整棵树恢复平衡
 				break;
 			}
 		}
 	}
-	
+
+
+	/**
+	 * 删除子树高度低的才会导致失衡，祖先节点子树中高度不变，所以只会有一个节点失衡
+	 * @param node 被删除的节点
+	 */
 	@Override
 	protected void afterRemove(Node<E> node) {
 		while ((node = node.parent) != null) {
@@ -34,7 +40,7 @@ public class AVLTree<E> extends BST<E> {
 				updateHeight(node);
 			} else {
 				// 恢复平衡
-				rebalance(node);
+				rebalance2(node);
 			}
 		}
 	}
@@ -193,7 +199,11 @@ public class AVLTree<E> extends BST<E> {
 			int rightHeight = right == null ? 0 : ((AVLNode<E>)right).height;
 			height = 1 + Math.max(leftHeight, rightHeight);
 		}
-		
+
+		/**
+		 * 返回左右子树高度较高的节点
+		 * @return
+		 */
 		public Node<E> tallerChild() {
 			int leftHeight = left == null ? 0 : ((AVLNode<E>)left).height;
 			int rightHeight = right == null ? 0 : ((AVLNode<E>)right).height;

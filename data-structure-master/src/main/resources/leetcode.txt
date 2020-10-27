@@ -33,6 +33,10 @@ N叉树的最大深度： https://leetcode-cn.com/problems/maximum-depth-of-n-ar
 从前序与中序遍历序列构造二叉树：https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
 根据前序和后序遍历构造二叉树：https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-postorder-traversal/
 对称二叉树：https://leetcode-cn.com/problems/symmetric-tree/
+翻转二叉树:https://leetcode-cn.com/problems/invert-binary-tree/
+判断一棵树是否为完全二叉树
+计算二叉树的高度
+利用前序遍历树状打印二叉树
 树状形式打印二叉树
 已知前序、中序遍历结果，求出后序遍历结果
 已经中序、后序遍历结果，求出前序遍历结果

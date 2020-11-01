@@ -4,7 +4,13 @@
 移除链表元素：https://leetcode-cn.com/problems/remove-linked-list-elements/
 删除排序链表中的重复元素：https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/
 链表的中间结点：https://leetcode-cn.com/problems/middle-of-the-linked-list/solution/
-
+环形链表:https://leetcode-cn.com/problems/linked-list-cycle/
+环形链表2:https://leetcode-cn.com/problems/linked-list-cycle-ii/
+相交链表:https://leetcode-cn.com/problems/intersection-of-two-linked-lists/
+删除链表的倒数第N个节点:https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/
+反转链表:https://leetcode-cn.com/problems/reverse-linked-list/
+奇偶链表:https://leetcode-cn.com/problems/odd-even-linked-list/solution/qi-ou-lian-biao-by-leetcode/
+回文链表:https://leetcode-cn.com/problems/palindrome-linked-list/
 
 栈
 有效的括号：https://leetcode-cn.com/problems/valid-parentheses/solution/

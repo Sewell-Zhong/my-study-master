@@ -2,6 +2,8 @@ package com;
 
 import org.junit.Test;
 
+import java.io.UnsupportedEncodingException;
+
 /**
  * @author : Mr-Z
  * @date : 2020/11/16 21:36
@@ -9,23 +11,41 @@ import org.junit.Test;
 public class DemoTest {
 
     @Test
-    public void test(){
-        String s7 = new StringBuilder("Program").append("ming").toString();
-        String s1 = "Programming";
-        String s2 = new String("Programming");
-        String s3 = "Program";
-        String s4 = "ming";
-        String s5 = "Program" + "ming";
-        String s6 = s3 + s4;
+    public void test() throws UnsupportedEncodingException {
+//        Integer a = new Integer(3);
+//        Integer b = 3; // 将3自动装箱成Integer类型
+//        int c = 3;
+//        int e = 3;
+//        Integer d = 3;
+//        System.out.println(a == b); // false 两个引用没有引用同一对象
+//        System.out.println(a == c); // true a自动拆箱成int类型再和c比较
+//        System.out.println(b == d);
+//        ArrayList<String> l =new ArrayList <>();
+//        System.out.println(l.toArray().getClass());
+//        String[] original = new String[]{};
+//        Integer[] original2 = new Integer[]{};
+//        System.out.println(Arrays.copyOf(original, 1, Integer[].class).getClass());
+//        System.out.println(Arrays.asList(original2).getClass());
 
-        System.out.println(s1 == s2);
-        System.out.println(s1 == s5);
-        System.out.println(s1 == s6);
-        System.out.println(s1 == s6.intern());
-        System.out.println(s2 == s2.intern());
-        System.out.println(s7 == s7.intern());
-        System.out.println(s7.hashCode());
-        System.out.println(s7.intern().hashCode());
+//        int a=1;
+//        System.out.println((~a)+1);
+//        Class cls = HashMap.class;
+//        Type[] genericInterfaces = cls.getGenericInterfaces();
+//        for (Type genericInterface : genericInterfaces) {
+//            System.out.println(genericInterface);
+//        }
+        System.out.println(0x7fffffff);
+        System.out.println((int)Math.pow(2,30));
+    }
 
+    class Test22 implements Comparable<String>{
+
+        @Override
+        public int compareTo(String o) {
+//            ConcurrentHashMap
+//            ArrayBlockingQueue
+//            LockSupport.park()
+            return 0;
+        }
     }
 }
